@@ -1,0 +1,7 @@
+Quick Negate:
+What does the program do?
+1. the address for the first word that the data label references (word value 1), which is 0x100, is stored in R2
+2. move the constant 5 to R5
+3. point to the value that is stored in the address which isstored in R2, load that into R3
+4. move the value in R3 to R3, look for sign status
+5. reverse subtract the value in R3 and constant 0, store in R3
