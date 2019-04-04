@@ -1,7 +1,25 @@
 Quick Negate:
-What does the program do?
+Question - What does the program do?
 1. the address for the first word that the data label references (word value 1), which is 0x100, is stored in R2
 2. move the constant 5 to R5
 3. point to the value that is stored in the address which isstored in R2, load that into R3
 4. move the value in R3 to R3, look for sign status
 5. reverse subtract the value in R3 and constant 0, store in R3
+6. store the value in R3 to the address pointed in R2, then set value in R2 + constant 4
+7. subtract value in R5 by constant 1, store in R5, look for sign status of carry which is 1
+8. branch to label loop if not equal to 0 (look at status bit C)
+~. repeat steps 2 thru 8 until BNE equals status bit C of 0
+In all, the program basically goes through an array of numbers and changes any negative numbers into positive numbers.
+
+
+
+Long Negate:
+Question 1 - What is the short program doing that the long program is not?
+The short program is actually updating the array values in memory while the long program doesn't.
+
+Question 2 - Why do you think the compiler has generated such assembly code?
+The long program writes the array within the Main function since that's how it is written in the C program. This means that the array is used on the Stack which treats variables as local. Those variables disappear when the program ends which is why we don't see them being written back into memory. 
+
+Question 3 - How would you try to change the code so that the compiler would generate an assembly program that behaves more like the short one above?
+I would make place the array outside of the Main function as a global variable. This should make the compiler write those array values into memory.
+
